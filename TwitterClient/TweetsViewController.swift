@@ -78,7 +78,7 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         let tweetTimeElapsed = tweet.timeElapsedString
         let tweetFavoriteCount = tweet.favoriteCount
         let tweetRTCount = tweet.retweetCount
-        
+        let tweetScreenname = tweet.screenname
         cell.tweetText.text = tweetString
         
         cell.favoriteButton.tag = indexPath.row
@@ -88,15 +88,18 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         cell.usernameLabel.text = tweetUserName
         cell.timeElapsedLabel.text = tweetTimeElapsed
         cell.tweet = tweet
-        cell.likeCountLabel.text = "\(tweetFavoriteCount)"
+        cell.likeCountLabel.text = "\(tweetFavoriteCount!)"
         cell.retweetCountLabel.text = "\(tweetRTCount!)"
-        
+        var image = UIImage(named: "retweet-action")
+        //cell.retweetButtonImage.image = image
+        cell.retweetButton.imageView!.alpha = 0
+        //cell.retweetButton.
+        cell.screenNameLabel.text = "@\(tweetScreenname!)"
         
         return cell
         
         
     }
-    
 
     /*
     // MARK: - Navigation

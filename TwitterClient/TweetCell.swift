@@ -26,13 +26,17 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var likeCountLabel: UILabel!
     
+    @IBOutlet weak var retweetButtonImage: UIImageView!
+    
+    @IBOutlet weak var screenNameLabel: UILabel!
     
     var tweet: Tweet?
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         tweetText.text = "HELLO"
+        
+        
         // Initialization code
     }
 
@@ -47,12 +51,23 @@ class TweetCell: UITableViewCell {
         
         var rowNum = sender.tag
         print("senderNum: \(rowNum)")
-        
         var id = tweet!.id
-        /*TwitterClient1.sharedInstance.favoriteWithParams(id) { (id, error) -> () in
+        var idDictionary = ["id": id!] as! NSDictionary
+     
+        TwitterClient1.sharedInstance.favoriteWithParams(idDictionary) { (id, error) -> () in
             print("\(id)")
+            var favoriteCount = Int(self.likeCountLabel.text!)
+            favoriteCount = favoriteCount! + 1
+            self.likeCountLabel.text = "\(favoriteCount!)"
+            
         }
-        */
+    }
+    
+    @IBAction func onRetweet(sender: AnyObject) {
+        var retweetCount = Int(self.retweetCountLabel.text!)
+        retweetCount = retweetCount! + 1
+        
+        self.retweetCountLabel.text = "\(retweetCount!)"
         
         
     }

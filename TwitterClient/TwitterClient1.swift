@@ -50,11 +50,12 @@ class TwitterClient1: BDBOAuth1SessionManager {
         
     }
     
-    func favoriteWithParams(params: Int?, completion: (id: Int?, error: NSError?) -> ()) {
+    func favoriteWithParams(params: NSDictionary?, completion: (id: Int?, error: NSError?) -> ()) {
         
         POST("1.1/favorites/create.json", parameters: params, success: { (operation: NSURLSessionDataTask, respons: AnyObject?) -> Void in
                 //success
-            var id = params
+            var id = params!["id"] as? Int
+            
             
             completion(id: id, error: nil)
             
