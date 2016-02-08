@@ -39,7 +39,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+could not retrieve "favourite_count" key from the tweet dictionary
+
 
 ## License
 
