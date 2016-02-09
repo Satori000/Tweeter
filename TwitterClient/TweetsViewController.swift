@@ -8,14 +8,24 @@
 
 import UIKit
 
+
+
 class TweetsViewController:  UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate{
     
+    @IBOutlet weak var barItem: UINavigationItem!
+    
+    @IBOutlet weak var composeImage: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    
+    var refreshControl: UIRefreshControl?
     var tweets: [Tweet]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl = UIRefreshControl()
+        //self.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl!)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -23,14 +33,14 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         
         TwitterClient1.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
             self.tweets = tweets
-            print("hey")
-            print(tweets![0].imageUrl)
+            //print("hey")
+            //print(tweets![0].imageUrl)
             self.tableView.reloadData()
         })
         
         //print(tweets![0].text)
-
         
+                //composeImage.tintColor = UIColor.magentaColor()
        
         // Do any additional setup after loading the view.
     }
@@ -46,14 +56,30 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         User.currentUser?.logout()
     }
     
+    func refresh(sender: AnyObject) {
+        
+        TwitterClient1.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+            self.tweets = tweets
+            //print("hey")
+            //print(tweets![0].imageUrl)
+            self.tableView.reloadData()
+        })
+
+        
+        
+        
+        tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = tweets {
-            print(tweets.count)
+            //print(tweets.count)
             return tweets.count
             
             
         } else {
-            print("hey this is 0")
+            //print("hey this is 0")
             return 0
    
         }
@@ -79,28 +105,60 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         let tweetFavoriteCount = tweet.favoriteCount
         let tweetRTCount = tweet.retweetCount
         let tweetScreenname = tweet.screenname
+        let tweetFavorited = tweet.favorited
+        let tweetRetweeted = tweet.retweeted
         cell.tweetText.text = tweetString
         
         cell.favoriteButton.tag = indexPath.row
         
-        
+        let imagert = UIImage(named: "retweet-action")
+        cell.retweetButton.setImage(imagert!, forState: .Normal)
         cell.avi.setImageWithURL(tweetImageUrl!)
         cell.usernameLabel.text = tweetUserName
         cell.timeElapsedLabel.text = tweetTimeElapsed
         cell.tweet = tweet
         cell.likeCountLabel.text = "\(tweetFavoriteCount!)"
         cell.retweetCountLabel.text = "\(tweetRTCount!)"
-        var image = UIImage(named: "retweet-action")
+        let image = UIImage(named: "retweet-action")
         //cell.retweetButtonImage.image = image
         cell.retweetButton.imageView!.alpha = 0
         //cell.retweetButton.
         cell.screenNameLabel.text = "@\(tweetScreenname!)"
+        cell.favorited = tweetFavorited
+        cell.retweeted = tweetRetweeted
         
         return cell
         
         
     }
+    
+    
+    @IBAction func onTweet(sender: AnyObject) {
+        
+        let dictionary = ["status": "."]
+        
+        TwitterClient1.sharedInstance.tweetWithParams(dictionary) { (status, error) -> () in
+            
+            
+            TwitterClient1.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+                self.tweets = tweets
+                //print("hey")
+                //print(tweets![0].imageUrl)
+                self.tableView.reloadData()
+            })
 
+            
+           // self.tableView.reloadData()
+            
+        } 
+
+        
+        
+        
+    }
+
+    
+    
     /*
     // MARK: - Navigation
 

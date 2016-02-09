@@ -19,6 +19,8 @@ class Tweet: NSObject {
     var favoriteCount: Int?
     var id: Int?
     var screenname: String?
+    var retweeted: Bool?
+    var favorited: Bool?
     
     
     init(dictionary: NSDictionary) {
@@ -27,8 +29,8 @@ class Tweet: NSObject {
         text = dictionary["text"] as? String
         imageUrl = userDictionary["profile_image_url"] as? String
         screenname = userDictionary["screen_name"] as? String 
-        
-        print(imageUrl)
+        retweeted = dictionary["retweeted"] as? Bool
+        favorited = dictionary["favorited"] as? Bool
         createdAtString = dictionary["created_at"] as? String
         let formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
@@ -39,7 +41,7 @@ class Tweet: NSObject {
         id = dictionary["id"] as? Int
         
         
-        print(dictionary)
+        //print(dictionary)
         
         let timeElapsed = Int(0 - (createdAt?.timeIntervalSinceNow)!)
        
