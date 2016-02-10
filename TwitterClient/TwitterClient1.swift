@@ -40,7 +40,7 @@ class TwitterClient1: BDBOAuth1SessionManager {
             
             let tweet = Tweet(dictionary: response as! NSDictionary)
             
-            //print(response as! NSDictionary)
+            print(response as! NSDictionary)
             completion(tweet: tweet, error: nil)
              //print("tweet \(response)")
             }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in

@@ -120,8 +120,8 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         cell.likeCountLabel.text = "\(tweetFavoriteCount!)"
         cell.retweetCountLabel.text = "\(tweetRTCount!)"
         let image = UIImage(named: "retweet-action")
-        //cell.retweetButtonImage.image = image
-        cell.retweetButton.imageView!.alpha = 0
+        //cell.retweetButtonImage.image = image!
+        //cell.retweetButton.imageView!.alpha = 0
         //cell.retweetButton.
         cell.screenNameLabel.text = "@\(tweetScreenname!)"
         cell.favorited = tweetFavorited
@@ -159,14 +159,35 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
 
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let sender = sender as? UITableViewCell {
+            
+            
+            print("congrats you just pressed a cell")
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            let tweet = self.tweets![indexPath!.row]
+            let detailsViewController = segue.destinationViewController as! TweetDetailsViewController
+            
+            detailsViewController.tweet = tweet
+            
+        }
+        else {
+            
+            print("hello you did not press a cell")
+            // obj is not a string array
+        }
+        
+        
+        
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

@@ -97,8 +97,8 @@ class TweetCell: UITableViewCell {
     }
     
     @IBAction func onRetweet(sender: AnyObject) {
-        var retweetCount = Int(self.retweetCountLabel.text!)
-        retweetCount = retweetCount! + 1
+        //var retweetCount = Int(self.retweetCountLabel.text!)
+        //retweetCount = retweetCount! + 1
         var id = tweet!.id
         
         let idDictionary = ["id": id!]
