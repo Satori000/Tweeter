@@ -38,6 +38,13 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
             self.tableView.reloadData()
         })
         
+        var id = 697624564147347455 as Int
+        
+        var dictionary = ["id": id]
+        
+        TwitterClient1.sharedInstance.getTweetWithParams(dictionary) { (status, error) -> () in
+            
+        }
         //print(tweets![0].text)
         
                 //composeImage.tintColor = UIColor.magentaColor()
@@ -164,6 +171,8 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var senderCell = sender!.superview!!.superview!
+        
         if let sender = sender as? UITableViewCell {
             
             
@@ -176,9 +185,17 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
             detailsViewController.tweet = tweet
             
         }
-        else {
+        else if let senderCell = senderCell as? UITableViewCell {
             
+            let cell = sender?.superview!!.superview as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            let tweet = self.tweets![indexPath!.row]
+            print(tweet.text)
+            let composeVC = segue.destinationViewController as! ComposeTweetViewController
+            
+            composeVC.tweet = tweet
             print("hello you did not press a cell")
+            
             // obj is not a string array
         }
         

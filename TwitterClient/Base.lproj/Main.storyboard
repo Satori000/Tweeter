@@ -75,6 +75,7 @@
                                 <state key="normal" title="Button" image="reply-action_0"/>
                                 <connections>
                                     <action selector="onReply:" destination="IOz-jW-NOa" eventType="touchUpInside" id="frK-w5-rPu"/>
+                                    <segue destination="exS-dp-uhT" kind="push" id="c5S-jn-pHg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMf-pK-Xfe">
@@ -277,6 +278,10 @@
                                                         <constraint firstAttribute="height" constant="14" id="zxa-wH-h4u"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="reply-action_0"/>
+                                                    <connections>
+                                                        <action selector="onReply:" destination="3PK-gh-ac9" eventType="touchUpInside" id="wOQ-Pq-9i0"/>
+                                                        <segue destination="exS-dp-uhT" kind="push" id="mSq-dk-H9D"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="0.99260346644103581" blue="0.98950605053901186" alpha="1" colorSpace="calibratedRGB"/>
@@ -414,7 +419,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uiG-dz-erT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2424" y="205"/>
+            <point key="canvasLocation" x="2517" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P7Y-Oc-tox">
@@ -442,4 +447,7 @@
         <image name="reply-action_0" width="65" height="72"/>
         <image name="retweet-action" width="75" height="72"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="c5S-jn-pHg"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -146,6 +146,17 @@ class TweetCell: UITableViewCell {
     }
     
     
+    @IBAction func onReply(sender: AnyObject) {
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    
     
 
 }
