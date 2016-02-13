@@ -21,6 +21,10 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
     var tweets: [Tweet]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+
         
         self.refreshControl = UIRefreshControl()
         //self.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -30,21 +34,15 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-        
-        TwitterClient1.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+        var dictionary = ["count": 200]
+        TwitterClient1.sharedInstance.homeTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
             self.tweets = tweets
-            //print("hey")
+            print("hey")
             //print(tweets![0].imageUrl)
             self.tableView.reloadData()
         })
         
-        var id = 697624564147347455 as Int
-        
-        var dictionary = ["id": id]
-        
-        TwitterClient1.sharedInstance.getTweetWithParams(dictionary) { (status, error) -> () in
-            
-        }
+        print("hello")
         //print(tweets![0].text)
         
                 //composeImage.tintColor = UIColor.magentaColor()
@@ -65,7 +63,9 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
     
     func refresh(sender: AnyObject) {
         
-        TwitterClient1.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+        let dictionary = ["count": 200]
+        
+        TwitterClient1.sharedInstance.homeTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
             self.tweets = tweets
             //print("hey")
             //print(tweets![0].imageUrl)
@@ -95,7 +95,7 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       
+      // print("cell method accessed")
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
         
         
@@ -114,6 +114,8 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         let tweetScreenname = tweet.screenname
         let tweetFavorited = tweet.favorited
         let tweetRetweeted = tweet.retweeted
+        
+        
         cell.tweetText.text = tweetString
         
         cell.favoriteButton.tag = indexPath.row
@@ -126,14 +128,16 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         cell.tweet = tweet
         cell.likeCountLabel.text = "\(tweetFavoriteCount!)"
         cell.retweetCountLabel.text = "\(tweetRTCount!)"
-        let image = UIImage(named: "retweet-action")
-        //cell.retweetButtonImage.image = image!
-        //cell.retweetButton.imageView!.alpha = 0
-        //cell.retweetButton.
         cell.screenNameLabel.text = "@\(tweetScreenname!)"
         cell.favorited = tweetFavorited
         cell.retweeted = tweetRetweeted
         
+        
+        
+        
+        
+        
+        //print(indexPath.row)
         return cell
         
         
@@ -176,7 +180,7 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         if let sender = sender as? UITableViewCell {
             
             
-            print("congrats you just pressed a cell")
+            //print("congrats you just pressed a cell")
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
             let tweet = self.tweets![indexPath!.row]
@@ -187,16 +191,35 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         }
         else if let senderCell = senderCell as? UITableViewCell {
             
-            let cell = sender?.superview!!.superview as! UITableViewCell
-            let indexPath = tableView.indexPathForCell(cell)
-            let tweet = self.tweets![indexPath!.row]
-            print(tweet.text)
-            let composeVC = segue.destinationViewController as! ComposeTweetViewController
             
-            composeVC.tweet = tweet
-            print("hello you did not press a cell")
+            if case let segue.identifier! = "profile" {
+                let cell = sender?.superview!!.superview as! UITableViewCell
+                let indexPath = tableView.indexPathForCell(cell)
+                let user = self.tweets![indexPath!.row].user!
+                
+                let profileVC = segue.destinationViewController as! ProfileViewController
+                profileVC.user = user
+               // print("hey just went to profile")
+                
+                
+                
+            } else {
+                let cell = sender?.superview!!.superview as! UITableViewCell
+                let indexPath = tableView.indexPathForCell(cell)
+                let tweet = self.tweets![indexPath!.row]
+                //print(tweet.text)
+                let composeVC = segue.destinationViewController as! ComposeTweetViewController
+                
+                composeVC.tweet = tweet
+                print("hello you did not press a cell")
+                
+
+                
+                
+                
+            }
             
-            // obj is not a string array
+                        // obj is not a string array
         }
         
         

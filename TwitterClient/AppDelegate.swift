@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //print("current user detected \(User.currentUser!.name)")
             let vc = storyboard.instantiateViewControllerWithIdentifier("navVc") as! UINavigationController
             
+            vc.navigationBar.barTintColor = UIColor.clearColor()
+            
             //var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
             
             window?.rootViewController = vc

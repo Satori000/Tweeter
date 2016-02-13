@@ -32,7 +32,7 @@ class ComposeTweetViewController: UIViewController
             TwitterClient1.sharedInstance.tweetWithParams(tweetDict) { (status, error) -> () in
                 
             }
-            print("hey you just replied to id #\(statusId)")
+            //print("hey you just replied to id #\(statusId)")
             
         } else {
             let tweetDict = ["status": tweetText!]
@@ -51,7 +51,7 @@ class ComposeTweetViewController: UIViewController
         super.viewDidLoad()
         
         if let tweet = self.tweet {
-            print(self.tweet!.text)
+            //print(self.tweet!.text)
             
         }
         // Do any additional setup after loading the view.
@@ -63,16 +63,19 @@ class ComposeTweetViewController: UIViewController
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         
+        let tweetVC = segue.destinationViewController as! TweetsViewController
+        
+        //tweetVC.self.viewDidLoad()
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     
-    */
+    
 }

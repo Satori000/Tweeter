@@ -30,6 +30,8 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var screenNameLabel: UILabel!
     
+    @IBOutlet weak var profileImageButton: UIButton!
+    
     var retweeted: Bool?
     var favorited: Bool?
     
@@ -65,7 +67,7 @@ class TweetCell: UITableViewCell {
         id = self.tweet!.id
         
         
-        print("favorited: \(favorited)")
+        //print("favorited: \(favorited)")
         
         if !favorited! {
             var favoriteCount = Int(self.likeCountLabel.text!)
