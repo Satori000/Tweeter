@@ -66,7 +66,7 @@ Time spent: **10** hours spent in total
 The following **required** functionality is completed:
 
 - [x] Tweet Details Page: User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
-- [ ] Profile page:
+- [x] Profile page:
    - [x] Contains the user header view
    - [x] Contains a section with the users basic stats: # tweets, # following, # followers
 - [x] Home Timeline: Tapping on a user image should bring up that user's profile page
@@ -92,8 +92,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. 
-2. 
+1. infinite scrolling
+2. animations and transition animations during segues
 
 ## Video Walkthrough 
 
