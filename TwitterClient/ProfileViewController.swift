@@ -26,6 +26,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var followerCountLabel: UILabel!
     
     @IBOutlet weak var followingCountLabel: UILabel!
+
+    @IBOutlet weak var tweetCountLabel: UILabel!
     
     var tweet: Tweet?
     var user: User?
@@ -40,6 +42,8 @@ class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
+        
+        self.navigationController?.navigationBar.topItem!.title = ""
         usernameLabel.text = user!.name!
         screennameLabel.text = "@\(user!.screenname!)"
         descriptionLabel.text = user!.tagline!
@@ -47,9 +51,13 @@ class ProfileViewController: UIViewController {
         print("followers: \(user!.followerCount!) following: \(user!.followingCount!)")
         followerCountLabel.text = user!.followerCount!
         profileImageView.setImageWithURL(NSURL(string: user!.profileImageUrl!)!)
+        profileImageView.layer.borderWidth = 4
+        profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        profileImageView.layer.cornerRadius = 8.0
+        profileImageView.clipsToBounds = true
         bannerImageView.setImageWithURL(NSURL(string: user!.bannerImageUrl!)!)
         
-        
+        tweetCountLabel.text = user!.tweetCount!
         
 
         // Do any additional setup after loading the view.

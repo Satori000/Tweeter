@@ -71,7 +71,15 @@ class TweetCell: UITableViewCell {
         
         if !favorited! {
             var favoriteCount = Int(self.likeCountLabel.text!)
+            
             favoriteCount = favoriteCount! + 1
+            
+            if favoriteCount! == 0 {
+                self.likeCountLabel.hidden = true
+                
+            } else {
+                self.likeCountLabel.hidden = false
+            }
             self.likeCountLabel.text = "\(favoriteCount!)"
             
             let image = UIImage(named: "like-action-on")
@@ -84,7 +92,18 @@ class TweetCell: UITableViewCell {
            // self.favorited = !self.favorited!
         } else {
             var favoriteCount = Int(self.likeCountLabel.text!)
+            
             favoriteCount = favoriteCount! - 1
+            
+            if favoriteCount! == 0 {
+                self.likeCountLabel.hidden = true
+                
+            } else {
+                self.likeCountLabel.hidden = false
+            }
+
+            
+            
             self.likeCountLabel.text = "\(favoriteCount!)"
             
             let image = UIImage(named: "like-action")
@@ -116,8 +135,16 @@ class TweetCell: UITableViewCell {
         if !retweeted! {
             var retweetCount = Int(self.retweetCountLabel.text!)
             
-            
             retweetCount = retweetCount! + 1
+            
+            if retweetCount! == 0 {
+                self.retweetCountLabel.hidden = true
+                
+            } else {
+                self.retweetCountLabel.hidden = false
+            }
+            
+
             self.retweetCountLabel.text = "\(retweetCount!)"
             
             let image = UIImage(named: "retweet-action-on")
@@ -131,8 +158,14 @@ class TweetCell: UITableViewCell {
         } else {
             var retweetCount = Int(self.retweetCountLabel.text!)
             
-            
             retweetCount = retweetCount! - 1
+            if retweetCount! == 0 {
+                self.retweetCountLabel.hidden = true
+                
+            } else {
+                self.retweetCountLabel.hidden = false
+            }
+
             self.retweetCountLabel.text = "\(retweetCount!)"
             
             let image = UIImage(named: "retweet-action")

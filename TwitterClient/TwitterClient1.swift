@@ -40,7 +40,7 @@ class TwitterClient1: BDBOAuth1SessionManager {
             
             let tweet = Tweet(dictionary: response as! NSDictionary)
             
-            print(response as! NSDictionary)
+            //print(response as! NSDictionary)
             completion(tweet: tweet, error: nil)
              //print("tweet \(response)")
             }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
@@ -75,8 +75,8 @@ class TwitterClient1: BDBOAuth1SessionManager {
         
         POST("1.1/statuses/update.json", parameters: params, progress: {(operation: NSProgress) -> Void in }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             let status = params!["status"] as! String
-            print("hey")
-            print("\(response)")
+            //print("hey")
+            //print("\(response)")
             
             completion(status: status, error: nil)
             

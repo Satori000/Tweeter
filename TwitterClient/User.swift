@@ -37,7 +37,7 @@ class User: NSObject {
         
         followerCount = String(dictionary["followers_count"]!)
         followingCount = String(dictionary["friends_count"]!)
-        tweetCount = dictionary["statuses_count"] as? String
+        tweetCount = String(dictionary["statuses_count"]!)
         bannerImageUrl = dictionary["profile_banner_url"] as? String
         
     }

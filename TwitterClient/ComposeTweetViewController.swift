@@ -72,6 +72,8 @@ class ComposeTweetViewController: UIViewController
         
         let tweetVC = segue.destinationViewController as! TweetsViewController
         
+        //tweetVC.tableView!.reloadData()
+        
         //tweetVC.self.viewDidLoad()
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

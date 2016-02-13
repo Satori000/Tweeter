@@ -21,6 +21,7 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
     var tweets: [Tweet]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view did load")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
@@ -126,12 +127,28 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         cell.usernameLabel.text = tweetUserName
         cell.timeElapsedLabel.text = tweetTimeElapsed
         cell.tweet = tweet
-        cell.likeCountLabel.text = "\(tweetFavoriteCount!)"
-        cell.retweetCountLabel.text = "\(tweetRTCount!)"
-        cell.screenNameLabel.text = "@\(tweetScreenname!)"
+               cell.screenNameLabel.text = "@\(tweetScreenname!)"
         cell.favorited = tweetFavorited
         cell.retweeted = tweetRetweeted
+        if tweetFavoriteCount! == 0 {
+            cell.likeCountLabel.hidden = true
+            cell.likeCountLabel.text = "\(tweetFavoriteCount!)"
+            //print(tweetFavoriteCount!)
+        } else {
+            cell.likeCountLabel.hidden = false
+            cell.likeCountLabel.text = "\(tweetFavoriteCount!)"
+            //print(tweetFavoriteCount!)
+        }
         
+        if tweetRTCount! == 0 {
+            cell.retweetCountLabel.hidden = true
+            cell.retweetCountLabel.text = "\(tweetRTCount!)"
+        } else {
+            cell.retweetCountLabel.hidden = false
+            cell.retweetCountLabel.text = "\(tweetRTCount!)"
+            
+        }
+
         
         
         
@@ -211,7 +228,7 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
                 let composeVC = segue.destinationViewController as! ComposeTweetViewController
                 
                 composeVC.tweet = tweet
-                print("hello you did not press a cell")
+                //print("hello you did not press a cell")
                 
 
                 

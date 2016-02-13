@@ -28,9 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             vc.navigationBar.barTintColor = UIColor.clearColor()
             
+            let profileVC = storyboard.instantiateViewControllerWithIdentifier("profileVC") as! ProfileViewController
+            profileVC.user = User.currentUser
+            
             //var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
             
-            window?.rootViewController = vc
+            
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [vc, profileVC]
+            window?.rootViewController = tabBarController
+            window?.makeKeyAndVisible()
         }
         
         
