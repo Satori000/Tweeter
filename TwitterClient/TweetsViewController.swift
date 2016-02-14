@@ -16,16 +16,20 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var composeImage: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
+    var reload = false
+
     var refreshControl: UIRefreshControl?
     var tweets: [Tweet]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        //let UITapRecognizer = UITapGestureRecognizer(target: self, action: "tappedImage:")
+        //avi.userInteractionEnabled = true
+        //UITapRecognizer.delegate = self
+       // self.profileImageView.addGestureRecognizer(UITapRecognizer)
         print("view did load")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
-
         
         self.refreshControl = UIRefreshControl()
         //self.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -35,18 +39,17 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-        var dictionary = ["count": 200]
+        //self.reloadTable()
+        let dictionary = ["count": 199]
+        
         TwitterClient1.sharedInstance.homeTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
             self.tweets = tweets
-            print("hey")
-            //print(tweets![0].imageUrl)
             self.tableView.reloadData()
         })
-        
-        print("hello")
-        //print(tweets![0].text)
-        
-                //composeImage.tintColor = UIColor.magentaColor()
+        self.tableView.reloadData()
+
+       // var timer =  NSTimer()
+       // timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "reloadTable", userInfo: nil, repeats: true)
        
         // Do any additional setup after loading the view.
     }
@@ -56,15 +59,42 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        print("hey view did appear")
+        if reload == true {
+            self.refreshControl?.beginRefreshing()
+            self.reloadTable()
+            self.refreshControl?.endRefreshing()
+            reload = !reload
+        }
+        
+    }
+    
+    
+        
+    
+    
     
     @IBAction func onLogout(sender: AnyObject) {
         
         User.currentUser?.logout()
     }
     
+    func reloadTable() {
+     
+        let dictionary = ["count": 199]
+                
+        TwitterClient1.sharedInstance.homeTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        })
+        self.tableView.reloadData()
+    }
+    
     func refresh(sender: AnyObject) {
         
-        let dictionary = ["count": 200]
+        let dictionary = ["count": 199]
         
         TwitterClient1.sharedInstance.homeTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
             self.tweets = tweets
@@ -82,12 +112,12 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = tweets {
-            //print(tweets.count)
+            print(tweets.count)
             return tweets.count
             
             
         } else {
-            //print("hey this is 0")
+           // print("hey this is 0")
             return 0
    
         }
@@ -238,7 +268,6 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
             
                         // obj is not a string array
         }
-        
         
         
         

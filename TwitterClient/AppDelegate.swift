@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarController.viewControllers = [vc, profileVC]
             window?.rootViewController = tabBarController
             window?.makeKeyAndVisible()
+            
+            
         }
         
         

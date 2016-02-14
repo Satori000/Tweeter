@@ -59,12 +59,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@ShakeebMajid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bx1-mq-K1Y">
-                                <rect key="frame" x="3" y="141" width="97" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.45474759615384619" green="0.45474759615384619" blue="0.45474759615384619" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I like Mango. Bernie Sanders 2016" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7w-Xh-qca">
                                 <rect key="frame" x="9" y="164" width="285" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -95,6 +89,12 @@
                                 <color key="textColor" red="0.091967147435897401" green="0.091967147435897401" blue="0.091967147435897401" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-UI-tSF">
+                                <rect key="frame" x="250" y="193" width="56" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.40815304487179482" green="0.40815304487179482" blue="0.40815304487179482" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zp-fT-WFw">
                                 <rect key="frame" x="238" y="192" width="9" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -108,10 +108,10 @@
                                     <constraint firstAttribute="height" constant="73" id="cYV-G1-g6m"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-UI-tSF">
-                                <rect key="frame" x="250" y="193" width="56" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@ShakeebMajid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bx1-mq-K1Y">
+                                <rect key="frame" x="9" y="140" width="97" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.40815304487179482" green="0.40815304487179482" blue="0.40815304487179482" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.45474759615384619" green="0.45474759615384619" blue="0.45474759615384619" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3VL-zn-5LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2187" y="-940"/>
+            <point key="canvasLocation" x="2229" y="-888"/>
         </scene>
         <!--Tweet Details View Controller-->
         <scene sceneID="mqK-3X-NOk">
@@ -298,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWj-pz-M2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2452" y="-540"/>
+            <point key="canvasLocation" x="2607" y="-469"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="Lc9-yP-G31">
@@ -347,8 +347,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="StT-Ny-TCx">
-                                                    <rect key="frame" x="8" y="0.0" width="45" height="44"/>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="StT-Ny-TCx">
+                                                    <rect key="frame" x="8" y="0.0" width="46" height="52"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="F58-Zr-EcA"/>
                                                         <constraint firstAttribute="width" constant="30" id="mp6-Rw-JfU"/>
@@ -425,8 +425,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g4-25-p01">
-                                                    <rect key="frame" x="7" y="-2" width="46" height="46"/>
-                                                    <state key="normal" title="Button"/>
+                                                    <rect key="frame" x="8" y="6" width="46" height="46"/>
                                                     <connections>
                                                         <segue destination="Eif-LO-HIN" kind="push" identifier="profile" id="TxG-vD-w3a"/>
                                                     </connections>
@@ -518,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twb-gz-mwy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1933" y="-249"/>
+            <point key="canvasLocation" x="1888" y="-185"/>
         </scene>
         <!--Compose Tweet View Controller-->
         <scene sceneID="rfP-gf-lB6">
@@ -532,21 +531,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CkQ-jc-v1E">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" text="  What's happening?" translatesAutoresizingMaskIntoConstraints="NO" id="CkQ-jc-v1E">
+                                <rect key="frame" x="0.0" y="64" width="320" height="216"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="  What's happening?">
-                                        <attributes>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f22-Sf-pVu">
+                                <rect key="frame" x="205" y="288" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="f22-Sf-pVu" secondAttribute="trailing" constant="73" id="BOV-np-o7K"/>
+                            <constraint firstItem="erV-nf-FD2" firstAttribute="top" secondItem="f22-Sf-pVu" secondAttribute="bottom" constant="216" id="CUu-pc-kDm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hCa-na-VXU">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="JVX-gD-Ogo">
@@ -563,6 +565,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="composeTextView" destination="CkQ-jc-v1E" id="Fbt-GY-D7s"/>
+                        <outlet property="countLabel" destination="f22-Sf-pVu" id="ySz-e8-za4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uiG-dz-erT" userLabel="First Responder" sceneMemberID="firstResponder"/>

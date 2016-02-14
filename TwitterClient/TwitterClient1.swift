@@ -50,24 +50,42 @@ class TwitterClient1: BDBOAuth1SessionManager {
         })
         
         
-        
     }
 
     
     func homeTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         
-        GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+        
+       GET("1.1/statuses/home_timeline.json", parameters: params, progress: { (progress: NSProgress) -> Void in
+        
+            }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                
+                var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                print("home timeline request completed")
+                //print("home timeline \(response)")
+                completion(tweets: tweets, error: nil)
+                
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("hey this home timeline request failed")
+                completion(tweets: nil, error: error)
+        }
+        
+    
+        
+        
+      /*  GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
             var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+            //print("home timeline \(response)")
             completion(tweets: tweets, error: nil)
-            // print("home timeline \(response)")
+           
         }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
-            //print("failure to get home timeline")
+            print("failure to get home timeline")
                 
             completion(tweets: nil, error: error)
         })
 
-        
+        */
         
     }
     
@@ -92,7 +110,6 @@ class TwitterClient1: BDBOAuth1SessionManager {
     }
     
     func replyWithParams(params: NSDictionary?, completion: (status: String?, error: NSError?) -> ()) {
-        
         POST("1.1/statuses/update.json", parameters: params, progress: {(operation: NSProgress) -> Void in }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             let status = params!["status"] as! String
             

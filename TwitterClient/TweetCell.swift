@@ -41,9 +41,23 @@ class TweetCell: UITableViewCell {
         super.awakeFromNib()
         //tweetText.text = "HELLO"
         
+        let UITapRecognizer = UITapGestureRecognizer(target: self, action: "tappedImage:")
+        //avi.userInteractionEnabled = true
+        UITapRecognizer.delegate = self
+        self.avi.addGestureRecognizer(UITapRecognizer)
+        
                 
         // Initialization code
     }
+    
+    func tappedImage(sender: AnyObject) {
+        print("hey bitch")
+        //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        //let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("profileVC") as! ProfileViewController
+        //storyBoard.presentViewController(nextViewController, animated:true, completion:nil)
+    }
+    
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -54,7 +68,7 @@ class TweetCell: UITableViewCell {
     
     @IBAction func onFavorite(sender: UIButton) {
         
-  
+        
         
         var id = tweet!.id
         var idDictionary = ["id": id!] as! NSDictionary
