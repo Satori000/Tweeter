@@ -99,6 +99,7 @@ The following **additional** features are implemented:
 - [x] user cannot exceed 140 count limit on the screen as it will prevent you from typing any more
 - [x] retweet and favorite buttons change color when pressed and tweets remember if you have favorited or retweeted them and remember          their color
 - [x] pull to refresh from last assignment(did not complete last week)
+- [x] time stamp keeps track of time elapsed not time posted
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
