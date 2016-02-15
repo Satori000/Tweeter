@@ -113,7 +113,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+This project is based on the old twitter UI but I based mine on the current one, therefore I did not do some of the optionals which are actually deprecated as the paging view for the description
 
 ## License
 
