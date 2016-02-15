@@ -77,7 +77,7 @@ class Tweet: NSObject {
             
         } else if daysElapsed != 0 {
             timeElapsedString = "\(daysElapsed)d"
-
+            
             
         } else if hoursElapsed != 0 {
             timeElapsedString = "\(hoursElapsed)h"

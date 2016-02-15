@@ -53,6 +53,19 @@ class User: NSObject {
         
     }
     
+    class func usersWithArray(array: [NSDictionary]) -> [User] {
+        var users = [User]()
+        
+        for dictionary in array {
+            users.append(User(dictionary: dictionary))
+            
+        }
+        
+        return users
+        
+    }
+
+    
     class var currentUser: User? {
         get {
             if _currentUser == nil {
