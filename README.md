@@ -29,7 +29,11 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] ability to reply, like and retweet and change color of buttons
+- [x] segmented control between likes and user timeline tableviews on profile page
+- [x] images viewable on home timeline
+- [x] follower list available on profile page
+- [x] tab bar navigation to user's profile
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
