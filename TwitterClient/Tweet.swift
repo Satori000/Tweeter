@@ -21,10 +21,21 @@ class Tweet: NSObject {
     var screenname: String?
     var retweeted: Bool?
     var favorited: Bool?
+    var mediaUrl: String?
     
     
     init(dictionary: NSDictionary) {
         let userDictionary = dictionary["user"] as! NSDictionary
+        let entitiesDictionary = dictionary["entities"] as! NSDictionary
+        if let mediaArray = entitiesDictionary["media"] as? NSArray {
+            let firstEntryDictionary = mediaArray[0]
+            mediaUrl = firstEntryDictionary["media_url"]! as? String
+            //print(mediaUrl!)
+            
+        }
+        
+        //print(entitiesDictionary)
+        //print(mediaArray)
         user = User(dictionary: userDictionary)
         text = dictionary["text"] as? String
         imageUrl = userDictionary["profile_image_url"] as? String

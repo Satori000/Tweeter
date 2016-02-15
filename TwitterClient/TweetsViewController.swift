@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class TweetsViewController:  UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate{
     
     @IBOutlet weak var barItem: UINavigationItem!
@@ -45,6 +44,8 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         TwitterClient1.sharedInstance.homeTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
+            
+            
         })
         self.tableView.reloadData()
 
@@ -88,6 +89,7 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         TwitterClient1.sharedInstance.homeTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
+            //self.refreshControl?.endRefreshing()
         })
         self.tableView.reloadData()
     }
@@ -126,7 +128,8 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      // print("cell method accessed")
+       print("cell method accessed: \(indexPath.row)")
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
         
         
@@ -145,13 +148,25 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         let tweetScreenname = tweet.screenname
         let tweetFavorited = tweet.favorited
         let tweetRetweeted = tweet.retweeted
-        
-        
+        let imagert = UIImage(named: "retweet-action")
+        cell.mediaImageView.layer.cornerRadius = 4.0
+        if let tweetMediaUrlString = tweet.mediaUrl {
+            print("hey this is the url: \(tweet.mediaUrl!)")
+            let tweetMediaUrl = NSURL(string: tweet.mediaUrl!)
+            cell.mediaImageView.setImageWithURL(tweetMediaUrl!)
+            
+          
+        } else {
+            print("hey there isn't a url")
+           // cell.mediaImageView.image = imagert
+            cell.mediaImageView.image = nil 
+            cell.mediaImageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        }
         cell.tweetText.text = tweetString
         
         cell.favoriteButton.tag = indexPath.row
         
-        let imagert = UIImage(named: "retweet-action")
+        
         cell.retweetButton.setImage(imagert!, forState: .Normal)
         cell.avi.setImageWithURL(tweetImageUrl!)
         cell.usernameLabel.text = tweetUserName
@@ -169,21 +184,13 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
             cell.likeCountLabel.text = "\(tweetFavoriteCount!)"
             //print(tweetFavoriteCount!)
         }
-        
         if tweetRTCount! == 0 {
             cell.retweetCountLabel.hidden = true
             cell.retweetCountLabel.text = "\(tweetRTCount!)"
         } else {
             cell.retweetCountLabel.hidden = false
             cell.retweetCountLabel.text = "\(tweetRTCount!)"
-            
         }
-
-        
-        
-        
-        
-        
         //print(indexPath.row)
         return cell
         

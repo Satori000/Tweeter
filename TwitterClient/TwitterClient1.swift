@@ -51,6 +51,42 @@ class TwitterClient1: BDBOAuth1SessionManager {
         
         
     }
+    func userTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        
+        GET("1.1/statuses/user_timeline.json", parameters: params, progress: { (progress: NSProgress) -> Void in
+            
+            }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                
+                var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                print("user timeline request completed")
+                completion(tweets: tweets, error: nil)
+                
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("hey this user timeline request failed")
+                completion(tweets: nil, error: error)
+        }
+
+        
+        
+    }
+    func favoritedTweetsWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        
+        GET("1.1/favorites/list.json", parameters: params, progress: { (progress: NSProgress) -> Void in
+            
+            }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                
+                var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                print("user timeline request completed")
+                completion(tweets: tweets, error: nil)
+                
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("hey this user timeline request failed")
+                completion(tweets: nil, error: error)
+        }
+        
+        
+        
+    }
 
     
     func homeTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
@@ -62,7 +98,7 @@ class TwitterClient1: BDBOAuth1SessionManager {
                 
                 var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
                 print("home timeline request completed")
-                //print("home timeline \(response)")
+                print("home timeline \(response)")
                 completion(tweets: tweets, error: nil)
                 
             }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in

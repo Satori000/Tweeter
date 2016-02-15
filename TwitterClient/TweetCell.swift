@@ -32,6 +32,9 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var profileImageButton: UIButton!
     
+    @IBOutlet weak var mediaImageView: UIImageView!
+    
+    
     var retweeted: Bool?
     var favorited: Bool?
     
@@ -41,10 +44,10 @@ class TweetCell: UITableViewCell {
         super.awakeFromNib()
         //tweetText.text = "HELLO"
         
-        let UITapRecognizer = UITapGestureRecognizer(target: self, action: "tappedImage:")
+        //let UITapRecognizer = UITapGestureRecognizer(target: self, action: "tappedImage:")
         //avi.userInteractionEnabled = true
-        UITapRecognizer.delegate = self
-        self.avi.addGestureRecognizer(UITapRecognizer)
+       // UITapRecognizer.delegate = self
+        //self.avi.addGestureRecognizer(UITapRecognizer)
         
                 
         // Initialization code
