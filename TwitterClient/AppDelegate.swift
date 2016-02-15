@@ -26,10 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateViewControllerWithIdentifier("navVc") as! UINavigationController
             
             vc.navigationBar.barTintColor = UIColor.clearColor()
-            
+            vc.tabBarItem.image = UIImage(named: "56470-200")
+
             let profileVC = storyboard.instantiateViewControllerWithIdentifier("profileVC") as! ProfileViewController
             profileVC.user = User.currentUser
-            
+            var profileTabImage = UIImage(named: "30467-200")
+            //profileTabImage.scale = .5
+            profileVC.tabBarItem.image = profileTabImage
+
             //var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
             
             
@@ -40,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
         }
-        
         
         
         print("didfinishlaunchingwithoptions Ran")

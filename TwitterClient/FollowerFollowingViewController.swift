@@ -12,6 +12,7 @@ class FollowerFollowingViewController: UIViewController, UITableViewDelegate, UI
     var users: [User]?
     var user: User?
     
+    @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -45,6 +46,15 @@ class FollowerFollowingViewController: UIViewController, UITableViewDelegate, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func onFollow(sender: AnyObject) {
+        
+        
+        
+        
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let users = users {

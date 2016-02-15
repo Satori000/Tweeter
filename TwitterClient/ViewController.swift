@@ -36,20 +36,11 @@ class ViewController: UIViewController {
                 self.performSegueWithIdentifier("loginSegue", sender: self)
                 
                 
-                
             } else {
-                
                 
             }
             
         }
-        
-        
-        
-       
-        
-        
-        
         
     }
     

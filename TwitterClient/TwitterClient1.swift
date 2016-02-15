@@ -32,6 +32,46 @@ class TwitterClient1: BDBOAuth1SessionManager {
         
         
     }
+ /*
+    func followWithParams(params: NSDictionary?, completion: (status: String?, error: NSError?) -> ()) {
+        
+        POST("1.1/friendships/create.json", parameters: params, progress: {(operation: NSProgress) -> Void in }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            //print("hey")
+            print("\(response)")
+            
+            completion(status: status, error: nil)
+            
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("follow not working")
+                completion(status: nil, error: error)
+        }
+        
+        
+        
+        
+    } */
+    
+    /*func unFollowWithParams(params: NSDictionary?, completion: (status: String?, error: NSError?) -> ()) {
+        
+        POST("1.1/friendships/create.json", parameters: params, progress: {(operation: NSProgress) -> Void in }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            //print("hey")
+            print("\(response)")
+            
+            completion(status: status, error: nil)
+            
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("follow not working")
+                completion(status: nil, error: error)
+        }
+
+        
+        
+        
+    }
+*/
+
     
     func getTweetWithParams(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
         let id = params!["id"] as! Int
