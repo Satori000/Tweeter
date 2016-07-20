@@ -19,6 +19,8 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
 
     var refreshControl: UIRefreshControl?
     var tweets: [Tweet]?
+    var isMoreDataLoading = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //let UITapRecognizer = UITapGestureRecognizer(target: self, action: "tappedImage:")
@@ -222,8 +224,53 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         
     }
 
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Handle scroll behavior here
+        if (!isMoreDataLoading) {
+            
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                isMoreDataLoading = true
+                print("hello1")
+                loadMoreData()
+                // ... Code to load more results ...
+            }
+            
+            
+            // ... Code to load more results ...
+            
+        }
+        
+    }
     
-    
+    func loadMoreData() {
+        
+        let dictionary = ["max_id": tweets![tweets!.count - 1].id!]
+        
+        TwitterClient1.sharedInstance.homeTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
+            for tweet in tweets! {
+                self.tweets!.append(tweet)
+            }
+            self.isMoreDataLoading = false
+
+            self.tableView.reloadData()
+        })
+        
+       /* Business.searchWithTerm("Thai", offset: businesses.count, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+            print("success")
+            for business in businesses {
+                self.businesses.append(business)
+            }
+            self.isMoreDataLoading = false
+            
+            //self.businesses = businesses
+            self.tableView.reloadData()
+        }) */
+        
+    }
     
     // MARK: - Navigation
 

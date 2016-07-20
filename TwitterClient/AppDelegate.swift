@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let profileVC = storyboard.instantiateViewControllerWithIdentifier("profileVC") as! ProfileViewController
             profileVC.user = User.currentUser
-            var profileTabImage = UIImage(named: "30467-200")
+            var profileTabImage = UIImage(named: "49968-200")
             //profileTabImage.scale = .5
             profileVC.tabBarItem.image = profileTabImage
 
@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tabBarController = UITabBarController()
             tabBarController.viewControllers = [vc, profileVC]
             window?.rootViewController = tabBarController
+            
             window?.makeKeyAndVisible()
             
             
