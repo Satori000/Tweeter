@@ -9,7 +9,8 @@
 import UIKit
 import AFNetworking
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+    
     
     @IBOutlet weak var tableControl: UISegmentedControl!
     
@@ -32,16 +33,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     
     var tweet: Tweet?
     var user: User?
     
     var tweets: [Tweet]?
-    
-    
-    
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +48,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-        
+        scrollView.contentSize = CGSize(width: 320, height: 1000)
+
+        scrollView.delegate = self
         
         let screenname = user?.screenname!
         let dictionary = ["screen_name": screenname!, "count": 150]
@@ -83,13 +84,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         profileImageView.layer.cornerRadius = 8.0
         profileImageView.clipsToBounds = true
         bannerImageView.setImageWithURL(NSURL(string: user!.bannerImageUrl!)!)
+       // var image = UIBlurEffect(style: UIBlurEffectStyle.Light)
         
-        tweetCountLabel.text = user!.tweetCount!
-        
+      /*  var image = bannerImageView.image!.applyBlurWithRadius(
+            CGFloat(5),
+            tintColor: nil,
+            saturationDeltaFactor: 1.0,
+            maskImage: nil
+        ) */
+       tweetCountLabel.text = user!.tweetCount!
 
         // Do any additional setup after loading the view.
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -215,7 +221,30 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Handle scroll behavior here
+        
+        bannerImageView.subviews.forEach({ $0.removeFromSuperview() })
 
+        let scrollViewContentHeight = scrollView.contentSize.height
+        
+        let alphaValue = -(scrollView.contentOffset.y / 200)
+        print("alphaValue: \(alphaValue) scrollViewoffset: \(scrollView.contentOffset.y)")
+        // When the user has scrolled past the threshold, start requesting
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        visualEffectView.frame = bannerImageView.bounds
+        visualEffectView.alpha = alphaValue
+        bannerImageView.addSubview(visualEffectView)
+        //bannerImageView.frame = CGRect(x: 0, y: 0, width: 320, height: 80 - scrollView.contentOffset.y)
+        bannerHeight.constant = 80 - scrollView.contentOffset.y
+        print("height \(80 - scrollView.contentOffset.y)")
+            // ... Code to load more results ...
+            
+        
+        
+    }
+    
+    
     
     // MARK: - Navigation
 
