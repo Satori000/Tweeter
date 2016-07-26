@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             //var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
             
-            
             let tabBarController = UITabBarController()
             tabBarController.viewControllers = [vc, profileVC]
             window?.rootViewController = tabBarController
@@ -51,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    
+    
     
     func userDidLogout() {
         var vc = storyboard.instantiateInitialViewController()! as UIViewController

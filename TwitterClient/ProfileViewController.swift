@@ -37,6 +37,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var accountButton: UIButton!
+    
     var tweet: Tweet?
     var user: User?
     
@@ -51,7 +53,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         scrollView.contentSize = CGSize(width: 320, height: 1000)
 
         scrollView.delegate = self
-        
         let screenname = user?.screenname!
         let dictionary = ["screen_name": screenname!, "count": 150]
         TwitterClient1.sharedInstance.userTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
@@ -251,9 +252,16 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let followerVC = segue.destinationViewController as! FollowerFollowingViewController
-        if let user = user {
-            followerVC.user = user
+        if (sender as! UIButton).tag == 1 {
+            
+           // self.performSegueWithIdentifier("toAccountView", sender: self)
+        } else {
+            print("hey this isn't the account view")
+            let followerVC = segue.destinationViewController as! FollowerFollowingViewController
+            if let user = user {
+                followerVC.user = user
+            }
+
         }
         
         // Get the new view controller using segue.destinationViewController.
