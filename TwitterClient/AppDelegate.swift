@@ -101,7 +101,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         TwitterClient1.sharedInstance.openURL(url)
         
-        
         print("application")
         return true
     }

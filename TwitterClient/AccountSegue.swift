@@ -17,13 +17,13 @@ class AccountSegue: UIStoryboardSegue {
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height
         
-        accountView.frame = CGRectMake(0.0, screenHeight - 400, screenWidth, screenHeight)
+        accountView.frame = CGRectMake(0.0, screenHeight , screenWidth, screenHeight)
         
         let window = UIApplication.sharedApplication().keyWindow
         window?.insertSubview(accountView, aboveSubview: profileView)
         
         
-        UIView.animateWithDuration(5.0, animations: { () -> Void in
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
             profileView.frame = CGRectOffset(profileView.frame, 0.0, -screenHeight)
             accountView.frame = CGRectOffset(accountView.frame, 0.0, -screenHeight)
             

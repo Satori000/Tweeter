@@ -11,6 +11,7 @@ import BDBOAuth1Manager
 import AFNetworking
 
 var _currentUser: User?
+var _userList = [] as! [User]
 let currentUserKey = "kCurrentUserKey"
 let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotification = "userDidLogoutNotification"
@@ -26,7 +27,8 @@ class User: NSObject {
     var followerCount: String?
     var followingCount: String?
     var tweetCount: String?
-    
+    //static var userList = [] as! [User]
+
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
@@ -62,19 +64,22 @@ class User: NSObject {
         }
         
         return users
-        
     }
-
     
     class var currentUser: User? {
         get {
             if _currentUser == nil {
-                var data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
-        
+               // let defaults = NSUserDefaults.standardUserDefaults()
+
+                // defaults.removeObjectForKey(currentUserKey)
+                let data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
+                
+               
         
                 if data != nil {
                     do {
-                        var dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                        let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                        //print("dictionary: \(dictionary)")
                         _currentUser = User(dictionary: dictionary as! NSDictionary)
                     } catch {
                         
@@ -88,11 +93,14 @@ class User: NSObject {
         }
         
         set(user) {
+            //let defaults = NSUserDefaults.standardUserDefaults()
+
+            // defaults.removeObjectForKey(currentUserKey)
             _currentUser = user
             
             if _currentUser != nil {
                 do {
-                    var data = try NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: [])
+                    let data = try NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: [])
                     NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
                 } catch {
                     
@@ -106,5 +114,59 @@ class User: NSObject {
 
         }
     }
+    
+    
+    
+    class var userList: [User]? {
+        get {
+            
+            if _userList.count == 0 {
+                let data = NSUserDefaults.standardUserDefaults().objectForKey("userList") as? NSData
+                
+                if data != nil {
+                    do {
+                        let dictionaryArray = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [NSDictionary]
+                        //print("dictionary: \(dictionary)")
+                        for dictionary in dictionaryArray {
+                            _userList.append(User(dictionary: dictionary as! NSDictionary))
+                            
+                        }
+                    } catch {
+                        
+                    }
+                    
+                }
+                //credit for code snippet goes to takashi wickes for JSON parsing
+            }
+            
+            return _userList as! [User]
+        }
+        
+        set(userlist) {
+            _userList = userlist!
+            
+            if _currentUser != nil {
+                do {
+                    var dictionaryArray = [] as! [NSDictionary]
+                    for user in userList! {
+                        dictionaryArray.append(user.dictionary)
+                        print("hello: \(user.dictionary)")
+                    }
+                    let data = try NSJSONSerialization.dataWithJSONObject(dictionaryArray, options: [])
+                    NSUserDefaults.standardUserDefaults().setObject(data, forKey: "userList")
+                } catch {
+                    
+                }
+                
+            } else {
+                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "userList")
+            }
+            
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+        }
+    }
+    
+    
     
 }
