@@ -117,7 +117,6 @@
         <!--Profile View Controller-->
         <scene sceneID="Dog-l1-AGf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3VL-zn-5LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="profileVC" id="Eif-LO-HIN" customClass="ProfileViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aVl-Cs-j3C"/>
@@ -290,7 +289,7 @@
                                         <rect key="frame" x="180" y="42" width="65" height="30"/>
                                         <state key="normal" title="Accounts"/>
                                         <connections>
-                                            <segue destination="XET-dI-JV3" kind="custom" identifier="toAccountView" customClass="AccountSegue" customModule="TwitterClient" customModuleProvider="target" id="8Lk-dj-7FV"/>
+                                            <segue destination="XET-dI-JV3" kind="modal" identifier="" id="8Lk-dj-7FV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -383,6 +382,7 @@
                         <outlet property="usernameLabel" destination="ffx-2R-HIB" id="tid-cc-P54"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3VL-zn-5LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1509" y="-631"/>
         </scene>
@@ -428,7 +428,6 @@
                                         <state key="normal" title="Add an existing account"/>
                                         <connections>
                                             <action selector="onADD:" destination="XET-dI-JV3" eventType="touchUpInside" id="7AN-Ec-3jU"/>
-                                            <action selector="onAdd:" destination="XET-dI-JV3" eventType="touchUpInside" id="fDX-rl-qLt"/>
                                         </connections>
                                     </button>
                                 </subviews>

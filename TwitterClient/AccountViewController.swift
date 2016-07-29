@@ -13,17 +13,17 @@ class AccountViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello")
+        print("hellooooo view loade")
          scrollView.contentSize = CGSize(width: 320, height: 1000)
         scrollView.delegate = self
         print(User.userList!.count)
-        TwitterClient1.sharedInstance.addUserWithCompletion { (user: User?, error: NSError?) in
+       /* TwitterClient1.sharedInstance.addUserWithCompletion { (user: User?, error: NSError?) in
             if user != nil {
                 print("hello")
                 
             }
-        }
-        print(User.currentUser)
+        }*/
+        //print(User.currentUser)
         // Do any additional setup after loading the view.
     }
 
@@ -32,6 +32,12 @@ class AccountViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func onADD(sender: AnyObject) {
+        TwitterClient1.sharedInstance.addUserWithCompletion { (user: User?, error: NSError?) in
+            if user != nil {
+                print("hello")
+                
+            }
+        }
         print("you stink")
     }
     
