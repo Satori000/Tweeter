@@ -89,12 +89,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         followingCountLabel.text = user!.followingCount!
         print("followers: \(user!.followerCount!) following: \(user!.followingCount!)")
         followerCountLabel.text = user!.followerCount!
-        profileImageView.setImageWithURL(NSURL(string: user!.profileImageUrl!)!)
+        //profileImageView.setImageWithURL(NSURL(string: user!.profileImageUrl!)!)
         profileImageView.layer.borderWidth = 4
         profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
         profileImageView.layer.cornerRadius = 8.0
         profileImageView.clipsToBounds = true
-        bannerImageView.setImageWithURL(NSURL(string: user!.bannerImageUrl!)!)
+        //bannerImageView.setImageWithURL(NSURL(string: user!.bannerImageUrl!)!)
         
         print("hey profile view!    5")
 

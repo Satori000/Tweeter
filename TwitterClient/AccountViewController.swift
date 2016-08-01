@@ -88,6 +88,20 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            print("you deleted the shit")
+            NSUserDefaults.standardUserDefaults().removeObjectForKey((tableView.cellForRowAtIndexPath(indexPath) as! AccountCell).user!.name!)
+            
+            var newUserList = User.userList
+            newUserList?.removeAtIndex(indexPath.row)
+            User.userList = newUserList
+            
+            users = User.userList
+            tableView.reloadData()
+        }
+    }
 
     @IBAction func onADD(sender: AnyObject) {
         TwitterClient1.sharedInstance.addUserWithCompletion { (user: User?, error: NSError?) in
