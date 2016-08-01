@@ -27,6 +27,7 @@ class User: NSObject {
     var followerCount: String?
     var followingCount: String?
     var tweetCount: String?
+    //var accessToken: BDBOAuth1Credential?
     //static var userList = [] as! [User]
 
     init(dictionary: NSDictionary) {
@@ -42,6 +43,20 @@ class User: NSObject {
         tweetCount = String(dictionary["statuses_count"]!)
         bannerImageUrl = dictionary["profile_banner_url"] as? String
         
+    }
+    
+    init(dictionary: NSDictionary, token: BDBOAuth1Credential) {
+        self.dictionary = dictionary
+        
+        name = dictionary["name"] as? String
+        screenname = dictionary["screen_name"] as? String
+        profileImageUrl = dictionary["profile_image_url"] as? String
+        tagline = dictionary["description"] as? String
+        
+        followerCount = String(dictionary["followers_count"]!)
+        followingCount = String(dictionary["friends_count"]!)
+        tweetCount = String(dictionary["statuses_count"]!)
+        bannerImageUrl = dictionary["profile_banner_url"] as? String
     }
     
     func logout() {

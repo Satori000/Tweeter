@@ -7,11 +7,26 @@
 //
 
 import UIKit
+import AFNetworking
 
 class AccountCell: UITableViewCell {
+    
+    var user: User?
 
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var screennameLabel: UILabel!
+    
+    @IBOutlet weak var checkBoxImage: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+       
+        
         // Initialization code
     }
 

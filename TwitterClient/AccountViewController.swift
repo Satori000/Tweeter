@@ -8,13 +8,35 @@
 
 import UIKit
 
-class AccountViewController: UIViewController, UIScrollViewDelegate {
-    @IBOutlet weak var scrollView: UIScrollView!
-
+class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+    var users: [User]?
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hellooooo view loade")
-         scrollView.contentSize = CGSize(width: 320, height: 1000)
+        print("hello 2123")
+        tableView.delegate = self
+        tableView.dataSource = self
+        print("hello 34")
+        users = User.userList!
+        print("hello 535")
+        
+        tableView.reloadData()
+        print("hello 145")
+        /* let window = UIApplication.sharedApplication().keyWindow
+        if window!.rootViewController is AccountViewController {
+            print("hellooooo view controller loaded")
+            
+            //do something if it's an instance of that class
+        }
+        
+        
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let screenHeight = UIScreen.mainScreen().bounds.size.height
+        
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 4)
         scrollView.delegate = self
         print(User.userList!.count)
        /* TwitterClient1.sharedInstance.addUserWithCompletion { (user: User?, error: NSError?) in
@@ -23,14 +45,50 @@ class AccountViewController: UIViewController, UIScrollViewDelegate {
                 
             }
         }*/
+        */
         //print(User.currentUser)
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if let users = users {
+            return users.count
+        } else {
+            return 0
+        }
+        
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        TwitterClient1.sharedInstance.setUser((tableView.cellForRowAtIndexPath(indexPath) as! AccountCell).user!)
+        print("hoy paloy")
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print("woah")
+        let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell", forIndexPath: indexPath) as! AccountCell
+        print("hello tableview")
+        let user = users![indexPath.row]
+        print("why")
+        cell.user = user
+        
+        print("arrived at cell")
+        cell.screennameLabel.text = user.screenname
+        
+        print("hey i got here")
+        cell.usernameLabel.text = user.name
+        cell.profileImage.setImageWithURL(NSURL(string: user.profileImageUrl!)!)
+        print("how")
+        
+        return cell
+    }
+
     @IBAction func onADD(sender: AnyObject) {
         TwitterClient1.sharedInstance.addUserWithCompletion { (user: User?, error: NSError?) in
             if user != nil {

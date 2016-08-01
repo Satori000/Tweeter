@@ -29,6 +29,9 @@ class AccountSegue: UIStoryboardSegue {
             
         }) { (Finished) -> Void in
             print("you animated the segue!")
+            self.sourceViewController.presentViewController(self.destinationViewController, animated: false, completion: {
+                print("I have been presented")
+            })
         }
     }
 }

@@ -46,11 +46,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("hey profile view!")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         scrollView.contentSize = CGSize(width: 320, height: 1000)
+        
+        print("hey profile view!   1")
 
         scrollView.delegate = self
         let screenname = user?.screenname!
@@ -58,20 +61,27 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         TwitterClient1.sharedInstance.userTimelineWithParams(dictionary, completion: { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
+            print("hey profile view!    1.5")
+
         })
         
+        print("hey profile view!   2")
+
         //var subViewOfSegment: UIView = tableControl.subviews[0] as UIView
         //subViewOfSegment.tintColor = UIColor.blueColor()
         
         self.tableView.reloadData()
 
-        
+        print("hey profile view!    3")
+
         
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
         
+        print("hey profile view!    4")
+
         self.navigationController?.navigationBar.topItem!.title = ""
         usernameLabel.text = user!.name!
         screennameLabel.text = "@\(user!.screenname!)"
@@ -85,6 +95,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         profileImageView.layer.cornerRadius = 8.0
         profileImageView.clipsToBounds = true
         bannerImageView.setImageWithURL(NSURL(string: user!.bannerImageUrl!)!)
+        
+        print("hey profile view!    5")
+
        // var image = UIBlurEffect(style: UIBlurEffectStyle.Light)
         
       /*  var image = bannerImageView.image!.applyBlurWithRadius(

@@ -27,7 +27,6 @@ class TweetsViewController:  UIViewController, UITableViewDataSource, UITableVie
         //avi.userInteractionEnabled = true
         //UITapRecognizer.delegate = self
        // self.profileImageView.addGestureRecognizer(UITapRecognizer)
-        print("view did load")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true

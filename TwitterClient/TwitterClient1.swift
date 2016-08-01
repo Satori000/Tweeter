@@ -311,6 +311,8 @@ class TwitterClient1: BDBOAuth1SessionManager {
                 
                 UIApplication.sharedApplication().openURL(authURL!)
                 
+                
+                
             }) { (error: NSError!) -> Void in
                 //print("failed to get request token")
                 self.loginCompletion?(user: nil, error: error)
@@ -338,6 +340,28 @@ class TwitterClient1: BDBOAuth1SessionManager {
         }
     }
     
+    func setUser(user: User) {
+        print("this is before you save the access token")
+        var token: BDBOAuth1Credential
+
+        print("here is the key for getting \(user.name!)")
+        if let data = NSUserDefaults.standardUserDefaults().objectForKey(user.name!) as? NSData {
+            print("hey you got past the if statement")
+            let unarc = NSKeyedUnarchiver(forReadingWithData: data)
+            print("hey you got pasat the unarchiver")
+            unarc.setClass(BDBOAuth1Credential.self, forClassName: "BDBOAuth1Credential")
+            print("hey you got past set class")
+            token = unarc.decodeObjectForKey("root") as! BDBOAuth1Credential
+            print("hey you got past the decoder")
+            TwitterClient1.sharedInstance.requestSerializer.saveAccessToken(token)
+
+        }
+        print("this is after")
+        
+        User.currentUser = user
+        print("this is after you save the user")
+    }
+    
     
     func openURL(url: NSURL) {
         fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
@@ -348,19 +372,25 @@ class TwitterClient1: BDBOAuth1SessionManager {
                 
                 }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
                     //print("user: \(response)")
-                    var user = User(dictionary: response as! NSDictionary)
-                 
+                    let user = User(dictionary: response as! NSDictionary, token: accessToken)
+                    //print("hey here's the token you shoulda saved: \(user.accessToken!)")
                     if self.login {
                         User.currentUser = user
                     } else {
                         print("hey you're supposed to add here")
-                        //User.userList.append(user)
                         var userList = User.userList!
+                        //userList.removeAll()
                         userList.append(user)
                         User.userList! = userList
-                        
                         print("does this work?")
                     }
+                    
+                    print("here is the key \(user.name!)")
+                    
+                    NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(accessToken), forKey: user.name!)
+                    
+                    NSUserDefaults.standardUserDefaults().synchronize()
+
                     
                     //print("user: \(user.name)")
                     self.loginCompletion?(user: user, error: nil)
@@ -369,7 +399,7 @@ class TwitterClient1: BDBOAuth1SessionManager {
                     self.loginCompletion?(user: nil, error: error)
             })
             
-            
+ 
             
             
             }) { (error: NSError!) -> Void in
@@ -377,5 +407,6 @@ class TwitterClient1: BDBOAuth1SessionManager {
                 self.loginCompletion?(user: nil, error: error)
         }
     }
+    
     
 }
