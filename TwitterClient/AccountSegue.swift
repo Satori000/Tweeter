@@ -10,6 +10,7 @@ import UIKit
 
 class AccountSegue: UIStoryboardSegue {
 
+   
     override func perform() {
         var profileView = self.sourceViewController.view as! UIView
         var accountView = self.destinationViewController.view as! UIView
@@ -29,9 +30,9 @@ class AccountSegue: UIStoryboardSegue {
             
         }) { (Finished) -> Void in
             print("you animated the segue!")
-            self.sourceViewController.presentViewController(self.destinationViewController, animated: false, completion: {
+          self.sourceViewController.presentViewController(self.destinationViewController, animated: false, completion: {
                 print("I have been presented")
-            })
+            }) 
         }
     }
 }

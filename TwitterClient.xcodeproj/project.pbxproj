@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13781E394FC540E97EAFC2DA /* Pods_TwitterClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36E951A6A5587A7FF38043 /* Pods_TwitterClient.framework */; };
+		1F086F1B1D4FFD6A0099F907 /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F086F1A1D4FFD6A0099F907 /* tabBarController.swift */; };
 		1F58F5EA1D41DB6E006C5C8F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F58F5E91D41DB6E006C5C8F /* AccountViewController.swift */; };
 		1F58F5EC1D41DC1F006C5C8F /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F58F5EB1D41DC1F006C5C8F /* AccountCell.swift */; };
 		1F58F5EE1D46EA43006C5C8F /* AccountSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F58F5ED1D46EA43006C5C8F /* AccountSegue.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		076A262B8A47FA3AD658C843 /* Pods-TwitterClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClient/Pods-TwitterClient.debug.xcconfig"; sourceTree = "<group>"; };
+		1F086F1A1D4FFD6A0099F907 /* tabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
 		1F58F5E91D41DB6E006C5C8F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1F58F5EB1D41DC1F006C5C8F /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		1F58F5ED1D46EA43006C5C8F /* AccountSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSegue.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				1F58F5E91D41DB6E006C5C8F /* AccountViewController.swift */,
 				1F58F5EB1D41DC1F006C5C8F /* AccountCell.swift */,
 				1F58F5ED1D46EA43006C5C8F /* AccountSegue.swift */,
+				1F086F1A1D4FFD6A0099F907 /* tabBarController.swift */,
 			);
 			path = TwitterClient;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9A790B1C66A25400691074 /* User.swift in Sources */,
+				1F086F1B1D4FFD6A0099F907 /* tabBarController.swift in Sources */,
 				1F58F5EE1D46EA43006C5C8F /* AccountSegue.swift in Sources */,
 				1F9A79111C681ADB00691074 /* TweetCell.swift in Sources */,
 				1F58F5EA1D41DB6E006C5C8F /* AccountViewController.swift in Sources */,

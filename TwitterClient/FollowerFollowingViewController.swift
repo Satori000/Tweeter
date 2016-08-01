@@ -10,7 +10,7 @@ import UIKit
 
 class FollowerFollowingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var users: [User]?
-    var user: User?
+    var user = User.currentUser
     
     @IBOutlet weak var tableView: UITableView!
     

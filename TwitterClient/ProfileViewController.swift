@@ -95,7 +95,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         profileImageView.layer.cornerRadius = 8.0
         profileImageView.clipsToBounds = true
         //bannerImageView.setImageWithURL(NSURL(string: user!.bannerImageUrl!)!)
-        
+        let longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPress:"))
+
+        self.tabBarController!.tabBar.addGestureRecognizer(longPress)
         print("hey profile view!    5")
 
        // var image = UIBlurEffect(style: UIBlurEffectStyle.Light)
@@ -113,6 +115,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func handleLongPress(sender: UILongPressGestureRecognizer) {
+        let location = sender.locationInView(self.tabBarController!.tabBar)
+        print("location: \(location)")
+        print("this works")
+        self.performSegueWithIdentifier("otherSegue", sender: self)
+        
     }
     
     
@@ -138,9 +148,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
             
                 self.tableView.reloadData()
-            
-
-        
         
     }
     
@@ -263,7 +270,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if (sender as! UIButton).tag == 1 {
             
@@ -279,7 +286,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
+    } */
     
 
 }

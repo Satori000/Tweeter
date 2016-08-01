@@ -289,7 +289,7 @@
                                         <rect key="frame" x="180" y="42" width="65" height="30"/>
                                         <state key="normal" title="Accounts"/>
                                         <connections>
-                                            <segue destination="XET-dI-JV3" kind="custom" identifier="" customClass="AccountSegue" customModule="TwitterClient" customModuleProvider="target" id="8Lk-dj-7FV"/>
+                                            <segue destination="XET-dI-JV3" kind="custom" identifier="toAccountView" customClass="AccountSegue" customModule="TwitterClient" customModuleProvider="target" id="8Lk-dj-7FV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -380,6 +380,7 @@
                         <outlet property="tableView" destination="IJs-wY-kDI" id="6gu-vy-Aje"/>
                         <outlet property="tweetCountLabel" destination="fd8-DU-EXU" id="Vnj-xL-KPL"/>
                         <outlet property="usernameLabel" destination="ffx-2R-HIB" id="tid-cc-P54"/>
+                        <segue destination="XET-dI-JV3" kind="custom" identifier="otherSegue" customClass="AccountSegue" customModule="TwitterClient" customModuleProvider="target" id="w2X-sT-0fV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3VL-zn-5LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -911,6 +912,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="svN-Xt-JWz"/>
         <segue reference="wcw-2u-OxD"/>
+        <segue reference="w2X-sT-0fV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.83984375" green="0.83984375" blue="0.83984375" alpha="1" colorSpace="calibratedRGB"/>
 </document>
