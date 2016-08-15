@@ -91,6 +91,27 @@ class TwitterClient1: BDBOAuth1SessionManager {
         
         
     }
+    
+    func getFriendsWithParams(params: NSDictionary?, completion: (users: [User]?, error: NSError?) -> ()) {
+        
+        GET("1.1/friends/list.json", parameters: params, progress: { (progress: NSProgress) -> Void in
+            
+            }, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                
+                let users = User.usersWithArray(response!["users"] as! [NSDictionary])
+                print(response)
+                print("user timeline request completed")
+                completion(users: users, error: nil)
+                
+        }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+            print("hey this user timeline request failed")
+            completion(users: nil, error: error)
+        }
+        
+        
+        
+    }
+
     func getFollowerWithParams(params: NSDictionary?, completion: (users: [User]?, error: NSError?) -> ()) {
         
         GET("1.1/followers/list.json", parameters: params, progress: { (progress: NSProgress) -> Void in

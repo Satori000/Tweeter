@@ -11,6 +11,7 @@ import UIKit
 class FollowerFollowingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var users: [User]?
     var user = User.currentUser
+    var friendsOrFollowers: Bool?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,22 +23,25 @@ class FollowerFollowingViewController: UIViewController, UITableViewDelegate, UI
         if let user = user {
             if let screenname = user.screenname {
                 let dictionary = ["screen_name": screenname, "count": 200]
-                TwitterClient1.sharedInstance.getFollowerWithParams(dictionary) { (users, error) -> () in
-                    self.users = users
+                if self.friendsOrFollowers == true {
+                    TwitterClient1.sharedInstance.getFriendsWithParams(dictionary) { (users, error) -> () in
+                        self.users = users
+                        
+                        self.tableView.reloadData()
+                    }
                     
-                    self.tableView.reloadData()
-                    
+                } else {
+                    TwitterClient1.sharedInstance.getFollowerWithParams(dictionary) { (users, error) -> () in
+                        self.users = users
+                        
+                        self.tableView.reloadData()
+                        
+                    }
                 }
-                
-                
             }
-
-            
-            
         }
         
-        tableView.reloadData()
-        
+        //tableView.reloadData()
         // Do any additional setup after loading the view.
     }
 

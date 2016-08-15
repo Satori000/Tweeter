@@ -148,7 +148,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
             
                 self.tableView.reloadData()
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -270,23 +269,29 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if (sender as! UIButton).tag == 1 {
+        if (sender as! UIButton).tag == -1 {
             
            // self.performSegueWithIdentifier("toAccountView", sender: self)
         } else {
+            
             print("hey this isn't the account view")
             let followerVC = segue.destinationViewController as! FollowerFollowingViewController
             if let user = user {
                 followerVC.user = user
+            }
+            if (sender as! UIButton).tag == 0 {
+                followerVC.friendsOrFollowers = true
+            } else {
+                followerVC.friendsOrFollowers = false
             }
 
         }
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    } */
+    }
     
 
 }

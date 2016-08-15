@@ -268,8 +268,8 @@
                                             <action selector="tableController:" destination="Eif-LO-HIN" eventType="valueChanged" id="b3S-0d-vmT"/>
                                         </connections>
                                     </segmentedControl>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xn-gK-90F">
-                                        <rect key="frame" x="149" y="164" width="86" height="23"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xn-gK-90F">
+                                        <rect key="frame" x="147" y="118" width="86" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="FOLLOWERS">
                                             <color key="titleColor" red="0.29133941499999999" green="0.29033228" blue="0.2967147436" alpha="1" colorSpace="calibratedRGB"/>
@@ -285,11 +285,21 @@
                                             <constraint firstAttribute="height" constant="73" id="nHM-7H-54d"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BW4-K9-jSl">
+                                    <button opaque="NO" tag="-1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BW4-K9-jSl">
                                         <rect key="frame" x="180" y="42" width="65" height="30"/>
                                         <state key="normal" title="Accounts"/>
                                         <connections>
                                             <segue destination="XET-dI-JV3" kind="custom" identifier="toAccountView" customClass="AccountSegue" customModule="TwitterClient" customModuleProvider="target" id="8Lk-dj-7FV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjd-Ne-TG9">
+                                        <rect key="frame" x="41" y="119" width="83" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="FOLLOWING">
+                                            <color key="titleColor" red="0.29133941499999999" green="0.29033228" blue="0.2967147436" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="v4D-lk-uOx" kind="modal" id="2Vl-b9-QTY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -312,13 +322,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text=" FOLLOWING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVT-Fy-hWR">
-                                <rect key="frame" x="39" y="203" width="86" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.58487580130000005" green="0.58487580130000005" blue="0.58487580130000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxH-NW-JPK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxH-NW-JPK">
                                 <rect key="frame" x="133" y="203" width="11" height="16"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="0.1359775641" green="0.1359775641" blue="0.1359775641" alpha="1" colorSpace="calibratedRGB"/>
@@ -352,15 +356,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aPs-Ha-jpq" firstAttribute="leading" secondItem="fd8-DU-EXU" secondAttribute="trailing" constant="8" id="2Pd-cV-gIw"/>
-                            <constraint firstItem="aPs-Ha-jpq" firstAttribute="centerY" secondItem="TVT-Fy-hWR" secondAttribute="centerY" id="6CE-lv-5KP"/>
                             <constraint firstItem="QfX-Pb-7Oc" firstAttribute="top" secondItem="UOT-Ui-LHN" secondAttribute="bottom" constant="8" id="7hs-lE-10y"/>
                             <constraint firstItem="b5P-DN-jKj" firstAttribute="top" secondItem="3OE-mV-llZ" secondAttribute="top" id="A3Y-vj-tpd"/>
                             <constraint firstItem="Dmn-s7-PTs" firstAttribute="top" secondItem="QfX-Pb-7Oc" secondAttribute="bottom" constant="8" id="T2u-OU-714"/>
-                            <constraint firstItem="TVT-Fy-hWR" firstAttribute="leading" secondItem="Dmn-s7-PTs" secondAttribute="trailing" id="hLt-f6-xBv"/>
-                            <constraint firstItem="Dmn-s7-PTs" firstAttribute="centerY" secondItem="TVT-Fy-hWR" secondAttribute="centerY" id="jhG-3z-jbJ"/>
                             <constraint firstItem="UOT-Ui-LHN" firstAttribute="top" secondItem="ffx-2R-HIB" secondAttribute="bottom" id="lDS-Su-FxL"/>
-                            <constraint firstItem="sxH-NW-JPK" firstAttribute="leading" secondItem="TVT-Fy-hWR" secondAttribute="trailing" constant="15" id="xSc-pt-pwq"/>
-                            <constraint firstItem="sxH-NW-JPK" firstAttribute="centerY" secondItem="TVT-Fy-hWR" secondAttribute="centerY" id="y5i-cZ-ws5"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -913,6 +912,7 @@
         <segue reference="svN-Xt-JWz"/>
         <segue reference="wcw-2u-OxD"/>
         <segue reference="w2X-sT-0fV"/>
+        <segue reference="2Vl-b9-QTY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.83984375" green="0.83984375" blue="0.83984375" alpha="1" colorSpace="calibratedRGB"/>
 </document>
